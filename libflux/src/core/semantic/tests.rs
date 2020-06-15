@@ -3122,7 +3122,7 @@ fn multiple_constraints() {
     }
 }
 #[test]
-fn constrained_timeable(){
+fn constrained_generics_timeable() {
     test_infer! {
         env: map![
             "a" => "forall [t0] where t0: Timeable (t: t0) -> t0",
@@ -3409,5 +3409,3 @@ fn test_error_messages() {
         err: "type error @3:13-3:20: missing required argument b",
     }
 }
-
-
