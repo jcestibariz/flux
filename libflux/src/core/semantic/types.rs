@@ -434,16 +434,20 @@ impl MonoType {
                 }),
             },
             MonoType::Duration => match with {
-                Kind::Comparable | Kind::Equatable | Kind::Nullable | Kind::Negatable | Kind::Timeable  => {
-                    Ok(Substitution::empty())
-                }
+                Kind::Comparable
+                | Kind::Equatable
+                | Kind::Nullable
+                | Kind::Negatable
+                | Kind::Timeable => Ok(Substitution::empty()),
                 _ => Err(Error::CannotConstrain {
                     act: self,
                     exp: with,
                 }),
             },
             MonoType::Time => match with {
-                Kind::Comparable | Kind::Equatable | Kind::Nullable | Kind::Timeable => Ok(Substitution::empty()),
+                Kind::Comparable | Kind::Equatable | Kind::Nullable | Kind::Timeable => {
+                    Ok(Substitution::empty())
+                }
                 _ => Err(Error::CannotConstrain {
                     act: self,
                     exp: with,
