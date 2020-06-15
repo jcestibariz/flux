@@ -287,13 +287,28 @@ func init() {
 					return nil, errors.New(codes.Invalid, "missing argument unit")
 				}
 
-				if v.Type().Nature() == semantic.Time && u.Type().Nature() == semantic.Duration {
-					w, err := execute.NewWindow(u.Duration(), u.Duration(), execute.Duration{})
-					if err != nil {
-						return nil, err
+				//print(v.Type())
+				if v.Type().Nature() == semantic.Time || v.Type().Nature() == semantic.Duration && u.Type().Nature() == semantic.Duration {
+					if v.Type().Nature() == semantic.Time {
+						w, err := execute.NewWindow(u.Duration(), u.Duration(), execute.Duration{})
+						if err != nil {
+							return nil, err
+						}
+						b := w.GetEarliestBounds(v.Time())
+						return values.NewTime(b.Start), nil
 					}
-					b := w.GetEarliestBounds(v.Time())
-					return values.NewTime(b.Start), nil
+
+					// how to do the truncate!?
+					if v.Type().Nature() == semantic.Duration {
+
+						w, err := execute.NewWindow(u.Duration(), u.Duration(), execute.Duration{})
+						if err != nil {
+							return nil, err
+						}
+						b := w.GetEarliestBounds(values.ConvertTime(time.Now()).Add(v.Duration()))
+						return values.NewTime(b.Start), nil
+					}
+
 				}
 				return nil, errors.New(codes.FailedPrecondition, fmt.Sprintf("cannot truncate argument t of type %v to unit %v", v.Type().Nature(), u))
 			}, false,

@@ -165,6 +165,7 @@ pub mod fbsemantic {
         Nullable = 6,
         Row = 7,
         Negatable = 8,
+        Timeable = 9,
     }
 
     const ENUM_MIN_KIND: u8 = 0;
