@@ -3122,6 +3122,34 @@ fn multiple_constraints() {
     }
 }
 #[test]
+fn constrained_timeable(){
+    test_infer! {
+        env: map![
+            "a" => "forall [t0] where t0: Timeable (t: t0) -> t0",
+            "c" => "forall [] duration"
+            "b" => "forall [] time",
+        ],
+        src: r#"
+            d = a(t: b)
+            e = a(t: c)
+        "#,
+        exp: map![
+            "d" => "forall [] time",
+            "e" => "forall [] time"
+        ],
+    }
+
+    test_infer_err! {
+        env: map![
+            "a" => "forall [t0] where t0: Timeable (t: t0) -> t0",
+            "b" => "forall [] string",
+        ],
+        src: r#"
+            c = a(t: b)
+        "#,
+    }
+}
+#[test]
 fn function_instantiation_and_generalization() {
     test_infer! {
         src: r#"
@@ -3381,3 +3409,5 @@ fn test_error_messages() {
         err: "type error @3:13-3:20: missing required argument b",
     }
 }
+
+

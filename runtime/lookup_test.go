@@ -48,11 +48,10 @@ func TestLookupComplexTypes(t *testing.T) {
 			want: "(t: time) -> int",
 		},
 		{
-			// sahas
 			path: "date",
 			id:   "truncate",
 			name: "lookup date.truncate",
-			want: "(t: t0, unit: duration) -> time",
+			want: "(t: time, unit: duration) -> time",
 		},
 		{
 			path: "experimental/bigtable",
