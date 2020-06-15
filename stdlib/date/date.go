@@ -287,8 +287,7 @@ func init() {
 					return nil, errors.New(codes.Invalid, "missing argument unit")
 				}
 
-				//print(v.Type())
-				if v.Type().Nature() == semantic.Time || v.Type().Nature() == semantic.Duration && u.Type().Nature() == semantic.Duration {
+				if values.IsTimeable(v) && u.Type().Nature() == semantic.Duration {
 					if v.Type().Nature() == semantic.Time {
 						w, err := execute.NewWindow(u.Duration(), u.Duration(), execute.Duration{})
 						if err != nil {
@@ -298,7 +297,6 @@ func init() {
 						return values.NewTime(b.Start), nil
 					}
 
-					// how to do the truncate!?
 					if v.Type().Nature() == semantic.Duration {
 
 						w, err := execute.NewWindow(u.Duration(), u.Duration(), execute.Duration{})

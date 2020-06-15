@@ -30,8 +30,8 @@ pub mod fbast {
         TestStatement = 8,
     }
 
-    const ENUM_MIN_STATEMENT: u8 = 0;
-    const ENUM_MAX_STATEMENT: u8 = 8;
+    pub const ENUM_MIN_STATEMENT: u8 = 0;
+    pub const ENUM_MAX_STATEMENT: u8 = 8;
 
     impl<'a> flatbuffers::Follow<'a> for Statement {
         type Inner = Self;
@@ -65,7 +65,7 @@ pub mod fbast {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_STATEMENT: [Statement; 9] = [
+    pub const ENUM_VALUES_STATEMENT: [Statement; 9] = [
         Statement::NONE,
         Statement::BadStatement,
         Statement::VariableAssignment,
@@ -78,7 +78,7 @@ pub mod fbast {
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_STATEMENT: [&'static str; 9] = [
+    pub const ENUM_NAMES_STATEMENT: [&'static str; 9] = [
         "NONE",
         "BadStatement",
         "VariableAssignment",
@@ -105,8 +105,8 @@ pub mod fbast {
         VariableAssignment = 2,
     }
 
-    const ENUM_MIN_ASSIGNMENT: u8 = 0;
-    const ENUM_MAX_ASSIGNMENT: u8 = 2;
+    pub const ENUM_MIN_ASSIGNMENT: u8 = 0;
+    pub const ENUM_MAX_ASSIGNMENT: u8 = 2;
 
     impl<'a> flatbuffers::Follow<'a> for Assignment {
         type Inner = Self;
@@ -140,14 +140,14 @@ pub mod fbast {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_ASSIGNMENT: [Assignment; 3] = [
+    pub const ENUM_VALUES_ASSIGNMENT: [Assignment; 3] = [
         Assignment::NONE,
         Assignment::MemberAssignment,
         Assignment::VariableAssignment,
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_ASSIGNMENT: [&'static str; 3] =
+    pub const ENUM_NAMES_ASSIGNMENT: [&'static str; 3] =
         ["NONE", "MemberAssignment", "VariableAssignment"];
 
     pub fn enum_name_assignment(e: Assignment) -> &'static str {
@@ -187,8 +187,8 @@ pub mod fbast {
         BadExpression = 24,
     }
 
-    const ENUM_MIN_EXPRESSION: u8 = 0;
-    const ENUM_MAX_EXPRESSION: u8 = 24;
+    pub const ENUM_MIN_EXPRESSION: u8 = 0;
+    pub const ENUM_MAX_EXPRESSION: u8 = 24;
 
     impl<'a> flatbuffers::Follow<'a> for Expression {
         type Inner = Self;
@@ -222,7 +222,7 @@ pub mod fbast {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_EXPRESSION: [Expression; 25] = [
+    pub const ENUM_VALUES_EXPRESSION: [Expression; 25] = [
         Expression::NONE,
         Expression::StringExpression,
         Expression::ParenExpression,
@@ -251,7 +251,7 @@ pub mod fbast {
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_EXPRESSION: [&'static str; 25] = [
+    pub const ENUM_NAMES_EXPRESSION: [&'static str; 25] = [
         "NONE",
         "StringExpression",
         "ParenExpression",
@@ -312,8 +312,8 @@ pub mod fbast {
         NotRegexpMatchOperator = 20,
     }
 
-    const ENUM_MIN_OPERATOR: i8 = 0;
-    const ENUM_MAX_OPERATOR: i8 = 20;
+    pub const ENUM_MIN_OPERATOR: i8 = 0;
+    pub const ENUM_MAX_OPERATOR: i8 = 20;
 
     impl<'a> flatbuffers::Follow<'a> for Operator {
         type Inner = Self;
@@ -347,7 +347,7 @@ pub mod fbast {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_OPERATOR: [Operator; 21] = [
+    pub const ENUM_VALUES_OPERATOR: [Operator; 21] = [
         Operator::InvalidOperator,
         Operator::MultiplicationOperator,
         Operator::DivisionOperator,
@@ -372,7 +372,7 @@ pub mod fbast {
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_OPERATOR: [&'static str; 21] = [
+    pub const ENUM_NAMES_OPERATOR: [&'static str; 21] = [
         "InvalidOperator",
         "MultiplicationOperator",
         "DivisionOperator",
@@ -409,8 +409,8 @@ pub mod fbast {
         OrOperator = 1,
     }
 
-    const ENUM_MIN_LOGICAL_OPERATOR: i8 = 0;
-    const ENUM_MAX_LOGICAL_OPERATOR: i8 = 1;
+    pub const ENUM_MIN_LOGICAL_OPERATOR: i8 = 0;
+    pub const ENUM_MAX_LOGICAL_OPERATOR: i8 = 1;
 
     impl<'a> flatbuffers::Follow<'a> for LogicalOperator {
         type Inner = Self;
@@ -444,11 +444,11 @@ pub mod fbast {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_LOGICAL_OPERATOR: [LogicalOperator; 2] =
+    pub const ENUM_VALUES_LOGICAL_OPERATOR: [LogicalOperator; 2] =
         [LogicalOperator::AndOperator, LogicalOperator::OrOperator];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_LOGICAL_OPERATOR: [&'static str; 2] = ["AndOperator", "OrOperator"];
+    pub const ENUM_NAMES_LOGICAL_OPERATOR: [&'static str; 2] = ["AndOperator", "OrOperator"];
 
     pub fn enum_name_logical_operator(e: LogicalOperator) -> &'static str {
         let index = e as i8;
@@ -471,8 +471,8 @@ pub mod fbast {
         ns = 9,
     }
 
-    const ENUM_MIN_TIME_UNIT: i8 = 0;
-    const ENUM_MAX_TIME_UNIT: i8 = 9;
+    pub const ENUM_MIN_TIME_UNIT: i8 = 0;
+    pub const ENUM_MAX_TIME_UNIT: i8 = 9;
 
     impl<'a> flatbuffers::Follow<'a> for TimeUnit {
         type Inner = Self;
@@ -506,7 +506,7 @@ pub mod fbast {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_TIME_UNIT: [TimeUnit; 10] = [
+    pub const ENUM_VALUES_TIME_UNIT: [TimeUnit; 10] = [
         TimeUnit::y,
         TimeUnit::mo,
         TimeUnit::w,
@@ -520,7 +520,7 @@ pub mod fbast {
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_TIME_UNIT: [&'static str; 10] =
+    pub const ENUM_NAMES_TIME_UNIT: [&'static str; 10] =
         ["y", "mo", "w", "d", "h", "m", "s", "ms", "us", "ns"];
 
     pub fn enum_name_time_unit(e: TimeUnit) -> &'static str {
@@ -537,8 +537,8 @@ pub mod fbast {
         WrappedExpression = 2,
     }
 
-    const ENUM_MIN_EXPRESSION_OR_BLOCK: u8 = 0;
-    const ENUM_MAX_EXPRESSION_OR_BLOCK: u8 = 2;
+    pub const ENUM_MIN_EXPRESSION_OR_BLOCK: u8 = 0;
+    pub const ENUM_MAX_EXPRESSION_OR_BLOCK: u8 = 2;
 
     impl<'a> flatbuffers::Follow<'a> for ExpressionOrBlock {
         type Inner = Self;
@@ -572,14 +572,14 @@ pub mod fbast {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_EXPRESSION_OR_BLOCK: [ExpressionOrBlock; 3] = [
+    pub const ENUM_VALUES_EXPRESSION_OR_BLOCK: [ExpressionOrBlock; 3] = [
         ExpressionOrBlock::NONE,
         ExpressionOrBlock::Block,
         ExpressionOrBlock::WrappedExpression,
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_EXPRESSION_OR_BLOCK: [&'static str; 3] =
+    pub const ENUM_NAMES_EXPRESSION_OR_BLOCK: [&'static str; 3] =
         ["NONE", "Block", "WrappedExpression"];
 
     pub fn enum_name_expression_or_block(e: ExpressionOrBlock) -> &'static str {
@@ -597,8 +597,8 @@ pub mod fbast {
         StringLiteral = 2,
     }
 
-    const ENUM_MIN_PROPERTY_KEY: u8 = 0;
-    const ENUM_MAX_PROPERTY_KEY: u8 = 2;
+    pub const ENUM_MIN_PROPERTY_KEY: u8 = 0;
+    pub const ENUM_MAX_PROPERTY_KEY: u8 = 2;
 
     impl<'a> flatbuffers::Follow<'a> for PropertyKey {
         type Inner = Self;
@@ -632,14 +632,14 @@ pub mod fbast {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_PROPERTY_KEY: [PropertyKey; 3] = [
+    pub const ENUM_VALUES_PROPERTY_KEY: [PropertyKey; 3] = [
         PropertyKey::NONE,
         PropertyKey::Identifier,
         PropertyKey::StringLiteral,
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_PROPERTY_KEY: [&'static str; 3] = ["NONE", "Identifier", "StringLiteral"];
+    pub const ENUM_NAMES_PROPERTY_KEY: [&'static str; 3] = ["NONE", "Identifier", "StringLiteral"];
 
     pub fn enum_name_property_key(e: PropertyKey) -> &'static str {
         let index = e as u8;

@@ -27,8 +27,8 @@ pub mod fbsemantic {
         Fun = 5,
     }
 
-    const ENUM_MIN_MONO_TYPE: u8 = 0;
-    const ENUM_MAX_MONO_TYPE: u8 = 5;
+    pub const ENUM_MIN_MONO_TYPE: u8 = 0;
+    pub const ENUM_MAX_MONO_TYPE: u8 = 5;
 
     impl<'a> flatbuffers::Follow<'a> for MonoType {
         type Inner = Self;
@@ -62,7 +62,7 @@ pub mod fbsemantic {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_MONO_TYPE: [MonoType; 6] = [
+    pub const ENUM_VALUES_MONO_TYPE: [MonoType; 6] = [
         MonoType::NONE,
         MonoType::Basic,
         MonoType::Var,
@@ -72,7 +72,8 @@ pub mod fbsemantic {
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_MONO_TYPE: [&'static str; 6] = ["NONE", "Basic", "Var", "Arr", "Row", "Fun"];
+    pub const ENUM_NAMES_MONO_TYPE: [&'static str; 6] =
+        ["NONE", "Basic", "Var", "Arr", "Row", "Fun"];
 
     pub fn enum_name_mono_type(e: MonoType) -> &'static str {
         let index = e as u8;
@@ -95,8 +96,8 @@ pub mod fbsemantic {
         Bytes = 8,
     }
 
-    const ENUM_MIN_TYPE: u8 = 0;
-    const ENUM_MAX_TYPE: u8 = 8;
+    pub const ENUM_MIN_TYPE: u8 = 0;
+    pub const ENUM_MAX_TYPE: u8 = 8;
 
     impl<'a> flatbuffers::Follow<'a> for Type {
         type Inner = Self;
@@ -130,7 +131,7 @@ pub mod fbsemantic {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_TYPE: [Type; 9] = [
+    pub const ENUM_VALUES_TYPE: [Type; 9] = [
         Type::Bool,
         Type::Int,
         Type::Uint,
@@ -143,7 +144,7 @@ pub mod fbsemantic {
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_TYPE: [&'static str; 9] = [
+    pub const ENUM_NAMES_TYPE: [&'static str; 9] = [
         "Bool", "Int", "Uint", "Float", "String", "Duration", "Time", "Regexp", "Bytes",
     ];
 
@@ -168,8 +169,8 @@ pub mod fbsemantic {
         Timeable = 9,
     }
 
-    const ENUM_MIN_KIND: u8 = 0;
-    const ENUM_MAX_KIND: u8 = 8;
+    pub const ENUM_MIN_KIND: u8 = 0;
+    pub const ENUM_MAX_KIND: u8 = 9;
 
     impl<'a> flatbuffers::Follow<'a> for Kind {
         type Inner = Self;
@@ -203,7 +204,7 @@ pub mod fbsemantic {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_KIND: [Kind; 9] = [
+    pub const ENUM_VALUES_KIND: [Kind; 10] = [
         Kind::Addable,
         Kind::Subtractable,
         Kind::Divisible,
@@ -213,10 +214,11 @@ pub mod fbsemantic {
         Kind::Nullable,
         Kind::Row,
         Kind::Negatable,
+        Kind::Timeable,
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_KIND: [&'static str; 9] = [
+    pub const ENUM_NAMES_KIND: [&'static str; 10] = [
         "Addable",
         "Subtractable",
         "Divisible",
@@ -226,6 +228,7 @@ pub mod fbsemantic {
         "Nullable",
         "Row",
         "Negatable",
+        "Timeable",
     ];
 
     pub fn enum_name_kind(e: Kind) -> &'static str {
@@ -247,8 +250,8 @@ pub mod fbsemantic {
         ReturnStatement = 7,
     }
 
-    const ENUM_MIN_STATEMENT: u8 = 0;
-    const ENUM_MAX_STATEMENT: u8 = 7;
+    pub const ENUM_MIN_STATEMENT: u8 = 0;
+    pub const ENUM_MAX_STATEMENT: u8 = 7;
 
     impl<'a> flatbuffers::Follow<'a> for Statement {
         type Inner = Self;
@@ -282,7 +285,7 @@ pub mod fbsemantic {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_STATEMENT: [Statement; 8] = [
+    pub const ENUM_VALUES_STATEMENT: [Statement; 8] = [
         Statement::NONE,
         Statement::OptionStatement,
         Statement::BuiltinStatement,
@@ -294,7 +297,7 @@ pub mod fbsemantic {
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_STATEMENT: [&'static str; 8] = [
+    pub const ENUM_NAMES_STATEMENT: [&'static str; 8] = [
         "NONE",
         "OptionStatement",
         "BuiltinStatement",
@@ -320,8 +323,8 @@ pub mod fbsemantic {
         NativeVariableAssignment = 2,
     }
 
-    const ENUM_MIN_ASSIGNMENT: u8 = 0;
-    const ENUM_MAX_ASSIGNMENT: u8 = 2;
+    pub const ENUM_MIN_ASSIGNMENT: u8 = 0;
+    pub const ENUM_MAX_ASSIGNMENT: u8 = 2;
 
     impl<'a> flatbuffers::Follow<'a> for Assignment {
         type Inner = Self;
@@ -355,14 +358,14 @@ pub mod fbsemantic {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_ASSIGNMENT: [Assignment; 3] = [
+    pub const ENUM_VALUES_ASSIGNMENT: [Assignment; 3] = [
         Assignment::NONE,
         Assignment::MemberAssignment,
         Assignment::NativeVariableAssignment,
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_ASSIGNMENT: [&'static str; 3] =
+    pub const ENUM_NAMES_ASSIGNMENT: [&'static str; 3] =
         ["NONE", "MemberAssignment", "NativeVariableAssignment"];
 
     pub fn enum_name_assignment(e: Assignment) -> &'static str {
@@ -398,8 +401,8 @@ pub mod fbsemantic {
         UnsignedIntegerLiteral = 20,
     }
 
-    const ENUM_MIN_EXPRESSION: u8 = 0;
-    const ENUM_MAX_EXPRESSION: u8 = 20;
+    pub const ENUM_MIN_EXPRESSION: u8 = 0;
+    pub const ENUM_MAX_EXPRESSION: u8 = 20;
 
     impl<'a> flatbuffers::Follow<'a> for Expression {
         type Inner = Self;
@@ -433,7 +436,7 @@ pub mod fbsemantic {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_EXPRESSION: [Expression; 21] = [
+    pub const ENUM_VALUES_EXPRESSION: [Expression; 21] = [
         Expression::NONE,
         Expression::StringExpression,
         Expression::ArrayExpression,
@@ -458,7 +461,7 @@ pub mod fbsemantic {
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_EXPRESSION: [&'static str; 21] = [
+    pub const ENUM_NAMES_EXPRESSION: [&'static str; 21] = [
         "NONE",
         "StringExpression",
         "ArrayExpression",
@@ -515,8 +518,8 @@ pub mod fbsemantic {
         InvalidOperator = 20,
     }
 
-    const ENUM_MIN_OPERATOR: i8 = 0;
-    const ENUM_MAX_OPERATOR: i8 = 20;
+    pub const ENUM_MIN_OPERATOR: i8 = 0;
+    pub const ENUM_MAX_OPERATOR: i8 = 20;
 
     impl<'a> flatbuffers::Follow<'a> for Operator {
         type Inner = Self;
@@ -550,7 +553,7 @@ pub mod fbsemantic {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_OPERATOR: [Operator; 21] = [
+    pub const ENUM_VALUES_OPERATOR: [Operator; 21] = [
         Operator::MultiplicationOperator,
         Operator::DivisionOperator,
         Operator::ModuloOperator,
@@ -575,7 +578,7 @@ pub mod fbsemantic {
     ];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_OPERATOR: [&'static str; 21] = [
+    pub const ENUM_NAMES_OPERATOR: [&'static str; 21] = [
         "MultiplicationOperator",
         "DivisionOperator",
         "ModuloOperator",
@@ -612,8 +615,8 @@ pub mod fbsemantic {
         OrOperator = 1,
     }
 
-    const ENUM_MIN_LOGICAL_OPERATOR: i8 = 0;
-    const ENUM_MAX_LOGICAL_OPERATOR: i8 = 1;
+    pub const ENUM_MIN_LOGICAL_OPERATOR: i8 = 0;
+    pub const ENUM_MAX_LOGICAL_OPERATOR: i8 = 1;
 
     impl<'a> flatbuffers::Follow<'a> for LogicalOperator {
         type Inner = Self;
@@ -647,11 +650,11 @@ pub mod fbsemantic {
     }
 
     #[allow(non_camel_case_types)]
-    const ENUM_VALUES_LOGICAL_OPERATOR: [LogicalOperator; 2] =
+    pub const ENUM_VALUES_LOGICAL_OPERATOR: [LogicalOperator; 2] =
         [LogicalOperator::AndOperator, LogicalOperator::OrOperator];
 
     #[allow(non_camel_case_types)]
-    const ENUM_NAMES_LOGICAL_OPERATOR: [&'static str; 2] = ["AndOperator", "OrOperator"];
+    pub const ENUM_NAMES_LOGICAL_OPERATOR: [&'static str; 2] = ["AndOperator", "OrOperator"];
 
     pub fn enum_name_logical_operator(e: LogicalOperator) -> &'static str {
         let index = e as i8;
