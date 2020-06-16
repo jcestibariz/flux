@@ -3126,8 +3126,8 @@ fn constrained_generics_timeable() {
     test_infer! {
         env: map![
             "a" => "forall [t0] where t0: Timeable (t: t0) -> t0",
-            "c" => "forall [] duration"
             "b" => "forall [] time",
+            "c" => "forall [] duration",
         ],
         src: r#"
             d = a(t: b)
